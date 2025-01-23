@@ -34,10 +34,56 @@ const pool = new Pool({
     res.json(rows);
     // res.send("Bienvenido a mi API DISNEY");
 });
-    
 
-    // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
-    app.get("/usuarios/", (req, res) =>{
+// ENDPOINTS DE LAS PELICULAS DE CADA GÉNERO
+
+// ENDPOINT PELÍCULAS DRAMA
+app.get("/peliculas/drama", async (req, res) => {
+    const { rows } = await pool.query(
+      "SELECT * FROM peliculas WHERE genero = 'Drama';"
+    );
+    res.json(rows);
+  });
+
+// ENDPOINT PELÍCULAS SUSPENSE
+
+app.get("/peliculas/suspense", async (req, res) => {
+    const { rows } = await pool.query(
+      "SELECT * FROM peliculas WHERE genero = 'Suspense';"
+    );
+    res.json(rows);
+  });
+  
+// ENDPOINT PELÍCULAS CRIMEN
+
+app.get("/peliculas/crimen", async (req, res) => {
+    const { rows } = await pool.query(
+      "SELECT * FROM peliculas WHERE genero = 'Crimen';"
+    );
+    res.json(rows);
+  });
+
+//ENDPOINT PELÍCULAS CIENCIA FICCIÓN
+
+app.get("/peliculas/cienciaficcion", async (req, res) => {
+    const { rows } = await pool.query(
+      "SELECT * FROM peliculas WHERE genero = 'Ciencia Ficción';"
+    );
+    res.json(rows);
+  });
+
+//ENDPOINT PELÍCULAS TERROR
+
+app.get("/peliculas/terror", async (req, res) => {
+    const { rows } = await pool.query(
+      "SELECT * FROM peliculas WHERE genero = 'Terror';"
+    );
+    res.json(rows);
+  });
+    
+ // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
+
+app.get("/usuarios/", (req, res) =>{
         // req -> no lo necesito
         // res -> sí
         res.send('Has solicitado una lista de usuarios');
@@ -80,25 +126,4 @@ app.post("/peliculas/agregar", async (req, res) => {
     res.send("Película añadida correctamente"); // Respondemos al cliente
 });
 
-// ENDPOINT PELICULAS DRAMA
 
-
-//ENDPOINT PELICULAS SUSPENSE
-
-
-//ENDPOINT PELICULAS CRIMEN
-
-
-//ENDPOINT PELICULAS CIENCIA FICCIÓN
-
-
-//ENDPOINT PELICULAS TERROR
-
-
-    // LOGIN, PELÍCULAS POR CATEGORÍAS
-        // ADD -> INSERT
-        //     app.post("/usuarios/", (req, res)); 
-    // ELIMINAR -> DELETE                            
-        // app.delete("/usuarios/", (req, res)); 
-    // MODIFICAR -> UPDATE
-        // app.put("/usuarios/", (req, res));    

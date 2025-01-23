@@ -1,8 +1,173 @@
-.pokemon-list {
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
+/* Configuración general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #5a5bf3; /* Color azul bonito */
+    color: white;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras suaves */
+}
+
+/* Contenedor general */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+}
+
+/* Botones */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
     border-radius: 5px;
+    background-color: #5a5bf3; /* Azul bonito */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Animación suave */
+}
+
+button:hover {
+    background-color: #4747d1; /* Azul más oscuro al pasar el ratón */
+}
+
+button:active {
+    transform: scale(0.95); /* Efecto de clic */
+}
+
+/* Listas de elementos (Pokémon y películas) */
+.pokemon-list,
+.pelicula-item {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f8f9fd; /* Fondo claro */
+    border-left: 4px solid #5a5bf3; /* Barra de color */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Títulos de secciones */
+h2 {
+    font-size: 20px;
+    border-bottom: 2px solid #5a5bf3; /* Línea azul */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Contenedor para las listas */
+#pokemon-list,
+#drama,
+#suspense,
+#crimen,
+#cienciaficcion,
+#terror {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+}
+
+/* Ajustes de texto */
+.pelicula-item,
+.pokemon-list {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Enlaces y botones */
+a {
+    text-decoration: none;
+    color: #5a5bf3;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #333; /* Cambiar a gris oscuro al pasar */
+}
+
+button {
+    background-color: #5a5bf3; /* Azul bonito */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {  
+    background-color: #4747d1; /* Azul oscuro al pasar el ratón */
+}   
+
+button:active {
+    transform: scale(0.95); /* Efecto de clic */
+}   
+
+/* Estilos adicionales */
+.list-item {    
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f8f9fd; /* Fondo claro */
+    border-left: 4px solid #5a5bf3; /* Barra de color */
+    border-radius: 5px; /* Bordes redondeados */    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.pokemon-list,
+.pelicula-item {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f8f9fd; /* Fondo claro */
+    border-left: 4px solid #5a5bf3; /* Barra de color */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2 {
+    font-size: 20px;
+    border-bottom: 2px solid #5a5bf3; /* Línea azul */    
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}    
+
+#pokemon-list,
+#drama,
+#suspense,
+#crimen,
+#cienciaficcion,
+#terror {
+    padding: 10px;
+    border-radius: 10px;    
+    background-color: #ffffff;    
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+}
+
+.pelicula-item,
+.pokemon-list {
+    font-size: 16px;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #5a5bf3;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #333; /* Cambiar a gris oscuro al pasar */
 }
