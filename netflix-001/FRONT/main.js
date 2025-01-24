@@ -106,6 +106,7 @@ function cargarPeliculasGenero(genero) {
             // luego encima le asigna una clase / id CSS para que pueda ser estilizado el elemento ; no ya solo el contenedor , aunque eso se puede hacer a mano también. 
 
             alert(`CARGANDO PELICULAS DEL GÉNERO: ${genero}`); // yo en este caso pondré una alerta: 
+            
             peliculas.forEach(pelicula => {
                 const peliculaElemento = document.createElement('div');
                 peliculaElemento.className = 'pelicula-item'; // Clase para aplicar estilos
