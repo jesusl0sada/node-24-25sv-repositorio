@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Configuración general del cuerpo */
+=======
+/* Fondo y estilos generales */
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -17,6 +21,7 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras suaves */
 }
 
+<<<<<<< HEAD
 /* Contenedor general */
 .container {
     max-width: 800px;
@@ -27,11 +32,17 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves */
 }
 
+=======
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
 /* Botones */
 button {
     display: inline-block;
     padding: 10px 20px;
+<<<<<<< HEAD
     margin: 5px;
+=======
+    margin: 10px 5px;
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
     font-size: 16px;
     font-weight: bold;
     border: none;
@@ -39,17 +50,26 @@ button {
     background-color: #5a5bf3; /* Azul bonito */
     color: white;
     cursor: pointer;
+<<<<<<< HEAD
     transition: background-color 0.3s ease; /* Animación suave */
+=======
+    transition: all 0.3s ease; /* Animación suave */
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
 }
 
 button:hover {
     background-color: #4747d1; /* Azul más oscuro al pasar el ratón */
+<<<<<<< HEAD
+=======
+    transform: scale(1.05); /* Agrandar un poco */
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
 }
 
 button:active {
     transform: scale(0.95); /* Efecto de clic */
 }
 
+<<<<<<< HEAD
 /* Listas de elementos (Pokémon y películas) */
 .pokemon-list,
 .pelicula-item {
@@ -86,10 +106,51 @@ h2 {
 /* Ajustes de texto */
 .pelicula-item,
 .pokemon-list {
+=======
+/* Contenedor general de cada sección */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden; /* Por si los elementos se desbordan */
+    position: relative; /* Para el diseño interno */
+}
+
+/* Títulos de las secciones (h2) */
+.container h2 {
+    font-size: 20px;
+    color: #5a5bf3; /* Azul para el título */
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #5a5bf3; /* Línea azul debajo del título */
+}
+
+/* Lista de películas */
+.lista-peliculas {
+    margin-top: 15px;
+    padding: 10px;
+}
+
+/* Cada elemento de la lista de películas */
+.pelicula-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f8f9fd; /* Fondo claro */
+    border-left: 4px solid #5a5bf3; /* Barra azul */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
     font-size: 16px;
     color: #333;
 }
 
+<<<<<<< HEAD
 /* Enlaces y botones */
 a {
     text-decoration: none;
@@ -170,4 +231,63 @@ a {
 
 a:hover {
     color: #333; /* Cambiar a gris oscuro al pasar */
+=======
+/* Elementos dentro de la película */
+.pelicula-item span {
+    font-weight: bold; /* Hacemos destacar el texto */
 }
+
+/* Mensaje cuando no hay películas */
+.lista-peliculas p {
+    text-align: center;
+    font-size: 16px;
+    color: #666; /* Gris claro */
+    padding: 10px;
+    background-color: #f0f0f5; /* Fondo sutil */
+    border-radius: 5px;
+>>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
+}
+
+/* Estilo para contenedores vacíos */
+.container.empty {
+    background-color: #f0f0f5; /* Fondo más claro */
+    color: #999; /* Texto gris claro */
+}
+
+/* Contenedor general de la sección Pokémon */
+#pokemon {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fd; /* Fondo claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título de la sección */
+#pokemon h2 {
+    font-size: 24px;
+    color: #007bff; /* Azul brillante */
+    margin-bottom: 15px;
+}
+
+/* Contenedor de la lista de Pokémon */
+.lista-pokemon {
+    display: flex;
+    flex-wrap: wrap; /* Para que los elementos se ajusten en filas */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Cada Pokémon individual */
+.pokemon-item {
+    padding: 10px;
+    background-color: #fff; /* Fondo blanco */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: calc(33.33% - 10px); /* Tres elementos por fila */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
