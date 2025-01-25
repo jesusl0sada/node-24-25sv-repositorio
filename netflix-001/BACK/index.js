@@ -23,91 +23,12 @@ const pool = new Pool({
     },
 });
 
-<<<<<<< HEAD
-// ENDPOINTS DE LAS PELICULAS DE CADA GÉNERO
 
-// ENDPOINT PELÍCULAS DRAMA
-app.get("/peliculas/drama", async (req, res) => {
-    const { rows } = await pool.query(
-      "SELECT * FROM peliculas WHERE genero = 'Drama';"
-    );
-    res.json(rows);
-  });
-
-// ENDPOINT PELÍCULAS SUSPENSE
-
-app.get("/peliculas/suspense", async (req, res) => {
-    const { rows } = await pool.query(
-      "SELECT * FROM peliculas WHERE genero = 'Suspense';"
-    );
-    res.json(rows);
-  });
-  
-// ENDPOINT PELÍCULAS CRIMEN
-
-app.get("/peliculas/crimen", async (req, res) => {
-    const { rows } = await pool.query(
-      "SELECT * FROM peliculas WHERE genero = 'Crimen';"
-    );
-    res.json(rows);
-  });
-
-//ENDPOINT PELÍCULAS CIENCIA FICCIÓN
-
-app.get("/peliculas/cienciaficcion", async (req, res) => {
-    const { rows } = await pool.query(
-      "SELECT * FROM peliculas WHERE genero = 'Ciencia Ficción';"
-    );
-    res.json(rows);
-  });
-
-//ENDPOINT PELÍCULAS TERROR
-
-app.get("/peliculas/terror", async (req, res) => {
-    const { rows } = await pool.query(
-      "SELECT * FROM peliculas WHERE genero = 'Terror';"
-    );
-    res.json(rows);
-  });
-    
- // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
-
-app.get("/usuarios/", (req, res) =>{
-        // req -> no lo necesito
-        // res -> sí
-        res.send('Has solicitado una lista de usuarios');
-    }); 
-
-    app.get("/usuarios/:id", (req, res) =>{
-        const userId = req.params.id;
-        res.send(`El ID del usuario es: ${userId}`);
-    });
-
-    // ----
-    app.listen(port, () => {
-        console.log(`Servidor corriendo en http://localhost:${port}`);
-      });
-      
-      // ENDPOINT PARA BUSCAR POR PELÍCULAS:
-      app.get("/peliculas/buscar", async (req, res) => {
-
-        const titulo = req.query.titulo; // Obtener el parámetro 'titulo' de la URL
-        if (!titulo) {
-            res.send("Debes proporcionar un título para buscar.");
-            return;
-        }
-    
-        // Consulta sencilla para buscar películas
-        const { rows } = await pool.query( 
-            `SELECT * FROM peliculas WHERE titulo LIKE '%${titulo}%'`);
-    
-        // Devolver resultados
-=======
 // **Endpoints para cada género de películas**
 app.get("/peliculas/", async (req, res) => {
     try {
         const { rows } = await pool.query("SELECT * FROM peliculas");
->>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
+
         res.json(rows);
     } catch (error) {
         console.error("Error al obtener las peliculas", error);
@@ -185,11 +106,3 @@ app.post("/peliculas/agregar", async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-
-=======
-// Servidor escuchando en el puerto especificado
-app.listen(port, () => {
-    console.log(`Servidor corriendo en http://127.0.0.1:${port}`);
-});
->>>>>>> 4393487e49c93f5763108d7454a964b7744b0e14
