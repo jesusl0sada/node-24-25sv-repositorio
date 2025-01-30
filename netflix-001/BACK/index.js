@@ -1,11 +1,16 @@
 // Importamos las librerías necesarias
-const express = require("express");
+const express = require("express"); // Te permite crear los endpoints, etc...
 const { Pool } = require("pg"); // Para conectarnos a PostgreSQL
 const cors = require("cors"); // Para habilitar CORS
 
 // Creamos la aplicación de Express
 const app = express();
 const port = 3000; // Puerto en el que correrá el servidor
+
+//ARRANCAR SERVER
+app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+});
 
 // Middleware para habilitar CORS y permitir solicitudes JSON
 app.use(cors());
@@ -23,6 +28,7 @@ const pool = new Pool({
     },
 });
 
+// ENDPOINTS TABLA PELICULAS (QUE NO PELICULAS 1) 
 
 // **Endpoints para cada género de películas**
 app.get("/peliculas/", async (req, res) => {
@@ -104,5 +110,20 @@ app.post("/peliculas/agregar", async (req, res) => {
         console.error("Error al añadir película:", error);
         res.status(500).send("Error al añadir película.");
     }
+
+
+    // AQUÍ PODEMOS AÑADIR SI QUEREMOS ENDPOINTS DE LA TABLA PELICULAS 1. 
+
+    app.get("/peliculas1/", async (req, res) => {  
+        try {
+            const { rows } = await pool.query("SELECT * FROM peliculas1"); // LA QUERY ES DIFERENTE A LA DE PELÍCULAS 1 -> ahora creamos botón en html; se lo asociamos a una función en JAVASCRIPT. 
+    
+            res.json(rows);
+        } catch (error) {
+            console.error("Error al obtener las peliculas", error);
+            res.status(500).send("Error al obtener películas.");
+        }
+    });
+    
 });
 
