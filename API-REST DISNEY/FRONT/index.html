@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Disney+ Clone Mejorado</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR (igual que antes) -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="Disney_Plus_logo.svg.png" alt="Disney+ Clone" />
+    </div>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="#" id="searchIcon">Búsqueda</a></li>
+        <li><a href="#" id="allMoviesBtn">Películas</a></li>
+        <li>
+          <div class="genre-dropdown">
+            <button id="genreButton">Géneros</button>
+            <div class="genre-dropdown-content" id="genreDropdownContent">
+              <!-- Se llena dinámicamente con JS -->
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- Icono de usuario -->
+    <div class="user-icon" id="userIcon">
+      <img 
+        src="https://cdn-icons-png.flaticon.com/512/847/847969.png" 
+        alt="User Icon"
+      />
+    </div>
+  </header>
+
+  <!-- BARRA DE BÚSQUEDA (oculta por defecto) -->
+  <div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Buscar por nombre..." />
+    <button id="searchButton">Buscar</button>
+  </div>
+
+  <!-- HERO PRINCIPAL / CARRUSEL DE PELÍCULAS -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-slide" id="heroSlide">
+      <div class="hero-content">
+        <h1>Película Destacada</h1>
+      </div>
+    </div>
+    <button class="hero-arrow left" id="heroPrev">&#10094;</button>
+    <button class="hero-arrow right" id="heroNext">&#10095;</button>
+  </section>
+
+  <!-- SECCIÓN DE MARCAS / SAGAS (CON CARRUSEL) -->
+  <section class="brands-section">
+    <h2>Elige tu saga favorita</h2>
+    <div class="carousel-container">
+      <!-- Flecha IZQUIERDA -->
+      <button class="carousel-arrow left" id="brandsPrev">&#10094;</button>
+      
+      <!-- “Ventana” del carrusel (oculta el overflow) -->
+      <div class="carousel-viewport">
+        <!-- Pista que se mueve con translateX -->
+        <div class="carousel-track" id="brandsTrack">
+          <!-- Los brand-card se insertarán dinámicamente con JS -->
+        </div>
+      </div>
+
+      <!-- Flecha DERECHA -->
+      <button class="carousel-arrow right" id="brandsNext">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- SECCIÓN RECOMENDACIONES -->
+  <section class="recommendations-section">
+    <h2>Recomendado para ti</h2>
+    <div class="movie-container" id="movieContainer">
+      <!-- Películas recomendadas se generan con JS -->
+    </div>
+  </section>
+
+  <!-- DETALLE DE PELÍCULA (OPCIONAL) -->
+  <section class="movie-detail" id="movieDetail" style="display: none;">
+    <div class="detail-content" id="detailContent">
+      <h3 id="detailTitle"></h3>
+      <p id="detailDescription"></p>
+      <span id="detailYear"></span>
+    </div>
+  </section>
+
+  <!-- MODAL DE LOGIN (OCULTO POR DEFECTO) -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-modal-content">
+      <span class="close-modal" id="closeLoginModal">&times;</span>
+      <h2>Iniciar Sesión</h2>
+      <input type="email" id="emailInput" placeholder="Correo electrónico" />
+      <input type="password" id="passwordInput" placeholder="Contraseña" />
+      <button id="loginButton">Iniciar sesión</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
