@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Disney+ Clone Mejorado</title>
+  <!-- Incluimos el CSS principal (se mostrará más abajo) -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome para los íconos del login -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="Disney_Plus_logo.svg.png" alt="Disney+ Clone" />
+    </div>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="#" id="searchIcon">Búsqueda</a></li>
+        <li><a href="#" id="allMoviesBtn">Películas</a></li>
+        <li>
+          <div class="genre-dropdown">
+            <button id="genreButton">Géneros</button>
+            <div class="genre-dropdown-content" id="genreDropdownContent">
+              <!-- Se llenará dinámicamente -->
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- Icono de usuario -->
+    <div class="user-icon" id="userIcon">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+        alt="User Icon"
+      />
+    </div>
+  </header>
+
+  <!-- BARRA DE BÚSQUEDA -->
+  <div class="search-bar" id="searchBar">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Buscar por nombre..."
+    />
+    <button id="searchButton">Buscar</button>
+  </div>
+
+  <!-- HERO / CARRUSEL DE PELÍCULAS -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-slide" id="heroSlide">
+      <div class="hero-content">
+        <h1>Película Destacada</h1>
+      </div>
+    </div>
+    <button class="hero-arrow left" id="heroPrev">&#10094;</button>
+    <button class="hero-arrow right" id="heroNext">&#10095;</button>
+  </section>
+
+  <!-- SECCIÓN DE MARCAS / SAGAS -->
+  <section class="brands-section">
+    <h2>Elige tu saga favorita</h2>
+    <div class="carousel-container">
+      <button class="carousel-arrow left" id="brandsPrev">&#10094;</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="brandsTrack">
+          <!-- Se insertan dinámicamente -->
+        </div>
+      </div>
+      <button class="carousel-arrow right" id="brandsNext">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- SECCIÓN RECOMENDACIONES -->
+  <section class="recommendations-section">
+    <h2>Recomendado para ti</h2>
+    <div class="movie-container" id="movieContainer">
+      <!-- Se generan las tarjetas de película con JS -->
+    </div>
+  </section>
+
+  <!-- DETALLE DE PELÍCULA (OPCIONAL) -->
+  <section class="movie-detail" id="movieDetail" style="display: none;">
+    <div class="detail-content" id="detailContent">
+      <h3 id="detailTitle"></h3>
+      <p id="detailDescription"></p>
+      <span id="detailYear"></span>
+    </div>
+  </section>
+
+  <!-- MODAL DE LOGIN (CON MENU MODERNO) -->
+  <!-- Se muestra al pulsar el icono de usuario -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-container" id="loginContainer">
+      <!-- Botón para cerrar el modal -->
+      <span class="close-modal" id="closeLoginModal">&times;</span>
+
+      <!-- Formulario de Registro (Sign Up) -->
+      <div class="form-container sign-up">
+        <form id="signUpForm">
+          <h1>Create Account</h1>
+          <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" id="signUpName" />
+          <input type="email" placeholder="Email" id="signUpEmail" />
+          <input type="password" placeholder="Password" id="signUpPassword" />
+          <button type="button" id="signUpButton">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Formulario de Inicio de Sesión (Sign In) -->
+      <div class="form-container sign-in">
+        <form id="signInForm">
+          <h1>Sign In</h1>
+          <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your email for sign in</span>
+          <input type="email" placeholder="Email" id="signInEmail" />
+          <input type="password" placeholder="Password" id="signInPassword" />
+          <a href="#" class="forgot-password">Forget Your Password?</a>
+          <button type="button" id="signInButton">Sign In</button>
+        </form>
+      </div>
+
+      <!-- Panel de toggle para cambiar entre Sign In y Sign Up -->
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>Welcome Back!</h1>
+            <p>Enter your personal details to use all of site features</p>
+            <button class="toggle-btn" id="loginToggle">Sign In</button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <h1>Hello, Friend!</h1>
+            <p>Register with your personal details to use all of site features</p>
+            <button class="toggle-btn" id="registerToggle">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Incluimos el script principal -->
+  <script src="index.js"></script>
+</body>
+</html>

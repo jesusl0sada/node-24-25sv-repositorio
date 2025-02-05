@@ -1,10 +1,13 @@
-/* RESET */
+/* ============================= */
+/*   ESTILOS GENERALES Y EXISTENTES */
+/* ============================= */
+
+/* RESET y estilos base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background-color: #0f0f0f;
   color: #fff;
@@ -19,18 +22,15 @@ body {
   background-color: #040714;
   padding: 1rem 2rem;
 }
-
 .logo img {
   height: 50px;
 }
-
 .nav-links ul {
   display: flex;
   list-style: none;
   gap: 2rem;
   margin-left: 2rem;
 }
-
 .nav-links a,
 #genreButton {
   font-size: 1.1rem;
@@ -43,12 +43,10 @@ body {
   padding: 0;
   transition: color 0.3s;
 }
-
 .nav-links a:hover,
 #genreButton:hover {
   color: #1f80e0;
 }
-
 /* ICONO DE USUARIO */
 .user-icon img {
   width: 40px;
@@ -84,11 +82,11 @@ body {
   background-color: #3091f0;
 }
 
-/* HERO / CARRUSEL (PELICULAS) */
+/* HERO / CARRUSEL */
 .hero-section {
   position: relative;
   width: 100%;
-  height: 75vh;
+  height: 67vh;
   overflow: hidden;
   background-color: #000;
 }
@@ -150,7 +148,7 @@ body {
   right: 0;
 }
 
-/* MARCAS / SAGAS --> CARRUSEL */
+/* MARCAS / SAGAS */
 .brands-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -160,14 +158,10 @@ body {
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
-
-/* Contenedor general del carrusel */
 .carousel-container {
   position: relative;
   width: 100%;
 }
-
-/* Flechas del carrusel */
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -192,24 +186,18 @@ body {
   background: rgba(0,0,0,0.6);
   transform: translateY(-50%) scale(1.1);
 }
-
-/* Ventana (oculta el overflow) */
 .carousel-viewport {
   overflow: hidden;
   width: 100%;
 }
-
-/* Pista (fila) de tarjetas */
 .carousel-track {
   display: flex;
   gap: 2rem;
   transition: transform 0.4s ease;
 }
-
-/* Cada tarjeta (brand-card) */
 .brand-card {
   width: 180px;
-  min-width: 180px; /* aseguramos que no se contraiga */
+  min-width: 180px;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -229,10 +217,10 @@ body {
 .brand-card:hover {
   transform: scale(1.06);
   box-shadow: 0 8px 18px rgba(0,0,0,0.6);
-  border-color: #000000;
+  border-color: #000;
 }
 
-/* RECOMENDACIONES (PELÍCULAS) */
+/* RECOMENDACIONES */
 .recommendations-section {
   padding: 2rem;
   max-width: 1200px;
@@ -253,35 +241,18 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.3s;
-}
-.movie-card img {
-  width: 100%;
-  object-fit: cover;
-  aspect-ratio: 2 / 3;
-}
-.movie-card:hover {
-  transform: scale(1.02);
-}
-/* Contenedor de cada película */
-.movie-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.3s;
   width: 200px;
   aspect-ratio: 2 / 3;
 }
-
-/* Imagen por defecto */
 .movie-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: opacity 0.3s ease-in-out;
 }
-
-/* Video oculto por defecto */
+.movie-card:hover img {
+  opacity: 0;
+}
 .movie-card video {
   position: absolute;
   top: 0;
@@ -292,17 +263,9 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-
-/* Hover: Oculta la imagen y muestra el tráiler */
-.movie-card:hover img {
-  opacity: 0;
-}
-
 .movie-card:hover video {
   opacity: 1;
 }
-
-/* Detalles de la película */
 .movie-details {
   position: absolute;
   top: 0;
@@ -320,28 +283,6 @@ body {
   padding: 1rem;
   color: #fff;
 }
-
-/* Mostrar los detalles al hacer hover */
-.movie-card:hover .movie-details {
-  opacity: 1;
-}
-
-.movie-details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.7);
-  opacity: 0;
-  transition: opacity 0.3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-}
 .movie-card:hover .movie-details {
   opacity: 1;
 }
@@ -349,7 +290,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* DETALLE (OPCIONAL) */
+/* DETALLE DE PELÍCULA */
 .movie-detail {
   background-color: #000;
   padding: 2rem;
@@ -359,7 +300,7 @@ body {
   margin: 0 auto;
 }
 
-/* Dropdown de géneros */
+/* DROPDOWN DE GÉNEROS */
 .genre-dropdown {
   position: relative;
   display: inline-block;
@@ -390,90 +331,188 @@ body {
   background-color: #333;
 }
 
-/* MODAL DE LOGIN */
+/* ============================= */
+/*    NUEVO LOGIN MODAL (MODERN LOGIN) */
+/* ============================= */
+
 .login-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.85);
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 10000;
 }
-.login-modal-content {
+
+.login-container {
   background-color: #141414;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  width: 500px;
+  max-width: 90%;
   position: relative;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Botón de cerrar modal */
+.login-container .close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+/* Estilos de los formularios */
+.login-container .form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.6s ease-in-out;
+  padding: 2rem;
+}
+.login-container .sign-in {
+  left: 0;
+  z-index: 2;
+  transform: translateX(0);
+  opacity: 1;
+}
+.login-container .sign-up {
+  left: 0;
+  z-index: 1;
+  transform: translateX(100%);
+  opacity: 0;
+}
+.login-container.active .sign-up {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+.login-container.active .sign-in {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+.login-container form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-}
-.login-modal-content h2 {
-  text-align: center;
-}
-.login-modal-content input {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #1f1f1f;
+  align-items: center;
   color: #fff;
-  outline: none;
 }
-.login-modal-content button {
+.login-container h1 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+.login-container input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+}
+.login-container button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
   background-color: #1f80e0;
   color: #fff;
-  border: none;
-  padding: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.login-container .social-icons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.login-container .social-icons .icon {
+  color: #fff;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container .social-icons .icon:hover {
+  color: #1f80e0;
+  border-color: #1f80e0;
+}
+.login-container a.forgot-password {
+  color: #1f80e0;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+/* Panel de toggle */
+.login-container .toggle-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  transition: transform 0.6s ease-in-out;
+  z-index: 1;
+}
+.login-container .toggle {
+  width: 100%;
+  text-align: center;
+}
+.login-container .toggle-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-container .toggle-panel h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.login-container .toggle-panel p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+.login-container .toggle-btn {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 700;
-  transition: background-color 0.3s;
+  font-size: 0.9rem;
 }
-.login-modal-content button:hover {
-  background-color: #3091f0;
-}
-.close-modal {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.8rem;
-  font-size: 1.5rem;
-  cursor: pointer;
+.login-container.active .toggle-container {
+  transform: translateX(-100%);
 }
 
-/* RESPONSIVO */
-@media (max-width: 992px) {
-  .hero-content h1 {
-    font-size: 2.4rem;
+/* RESPONSIVO para el login modal */
+@media (max-width: 600px) {
+  .login-container {
+    width: 90%;
   }
 }
 
-@media (max-width: 768px) {
-  .hero-content {
-    bottom: 2rem;
-    left: 1rem;
-    max-width: 80%;
-    padding: 1rem;
-  }
-  .hero-content h1 {
-    font-size: 1.8rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
-  /* Ajustar carrusel en móviles */
-  .brand-card {
-    width: 140px;
-    min-width: 140px;
-  }
-  .carousel-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-}
+/* ============================= */
+/*           FIN CSS           */
+/* ============================= */

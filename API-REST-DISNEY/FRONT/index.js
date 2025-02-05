@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
   heroPrev.addEventListener("click", () => moveHeroSlide(-1));
   heroNext.addEventListener("click", () => moveHeroSlide(1));
 
-  // 8) Configurar login (si procede)
+  // 8) Configurar login (con menú moderno integrado)
   setupUserLogin();
 
   // 9) Configurar flechas del carrusel de sagas
@@ -81,7 +81,7 @@ function setupSearchBar() {
 function setupNavbarButtons() {
   const allMoviesBtn = document.getElementById("allMoviesBtn");
   allMoviesBtn.addEventListener("click", () => {
-    fetchPeliculasRecomendadas(); // Muestra todas
+    fetchPeliculasRecomendadas(); // Muestra todas las películas
   });
 
   const genreButton = document.getElementById("genreButton");
@@ -122,7 +122,7 @@ function renderGeneroDropdown(generos) {
 }
 
 /*****************************************************
- *         4) SAGAS (logos) -> se mostrará en carrusel
+ *         4) SAGAS (Logos) -> se mostrará en carrusel
  *****************************************************/
 async function fetchSagas() {
   try {
@@ -135,7 +135,6 @@ async function fetchSagas() {
 }
 
 function renderSagas(sagas) {
-  // En lugar de usar brandsContainer, usamos #brandsTrack
   const brandsTrack = document.getElementById("brandsTrack");
   brandsTrack.innerHTML = "";
 
@@ -158,7 +157,7 @@ function renderSagas(sagas) {
     const brandCard = document.createElement("div");
     brandCard.classList.add("brand-card");
 
-    // Si existe el logo en sagaLogos, usarlo; si no, placeholder
+    // Si existe el logo en sagaLogos, usarlo; de lo contrario, placeholder
     const localFile = sagaLogos[saga.nombre]
       ? sagaLogos[saga.nombre]
       : "https://via.placeholder.com/200x100?text=SIN+LOGO";
@@ -188,16 +187,11 @@ function setupBrandsCarouselArrows() {
 
   brandsPrev.addEventListener("click", () => moveBrandsCarousel(-1));
   brandsNext.addEventListener("click", () => moveBrandsCarousel(1));
-
-  // Si quieres ajustar el tamaño dinámicamente, puedes hacerlo al renderizar
 }
 
 /*
   Mueve el carrusel (brandsTrack) a izquierda/derecha, de modo que
   se vean 5 tarjetas cada vez.
-
-  - direction = +1 (pasar a la "siguiente" vista)
-                -1 (pasar a la "anterior" vista)
 */
 function moveBrandsCarousel(direction) {
   const brandsTrack = document.getElementById("brandsTrack");
@@ -206,22 +200,19 @@ function moveBrandsCarousel(direction) {
   // Calculamos el nuevo índice de la primera tarjeta visible
   currentSlide += direction;
 
-  // Límite mínimo (no pasamos de la primera)
+  // Límite mínimo y máximo
   if (currentSlide < 0) {
     currentSlide = 0;
   }
-  // Límite máximo (que no se pase del total - visible)
   if (currentSlide > totalCards - visibleCards) {
     currentSlide = totalCards - visibleCards;
   }
 
-  // Ancho aproximado de cada .brand-card (con gap).
-  // Ajusta si tu gap cambia, o mídelo dinámicamente con offsetWidth.
-  const cardWidth = 180;      // .brand-card width
-  const gap = 32;            // 2rem ~ 32px (depende de font-size)
-  const itemFullWidth = cardWidth + gap; 
+  // Ancho aproximado de cada .brand-card (incluyendo gap)
+  const cardWidth = 180; // ancho de cada tarjeta
+  const gap = 32; // separación (2rem ≈ 32px)
+  const itemFullWidth = cardWidth + gap;
 
-  // Desplazamos la pista
   const distance = currentSlide * itemFullWidth;
   brandsTrack.style.transform = `translateX(-${distance}px)`;
 }
@@ -239,7 +230,7 @@ async function fetchHeroPeliculas() {
 
     renderHeroSlide(heroIndex);
 
-    // Auto-rotación cada 4s
+    // Auto-rotación cada 4 segundos
     if (heroInterval) clearInterval(heroInterval);
     heroInterval = setInterval(() => {
       moveHeroSlide(1);
@@ -329,7 +320,7 @@ function renderPeliculasRecomendadas(peliculas) {
 /*****************************************************
  *         7) BÚSQUEDA Y FILTROS
  *****************************************************/
-// Por nombre
+// Buscar por nombre
 async function fetchPeliculasByNombre(nombre) {
   try {
     const response = await fetch(`${BASE_URL}/peliculas?nombre=${nombre}`);
@@ -381,40 +372,77 @@ function showMovieDetail(pelicula) {
 }
 
 /*****************************************************
- *         9) LOGIN MODAL (SI YA LO TENÍAS)
+ *         9) LOGIN MODAL (CON MENÚ MODERNO)
  *****************************************************/
 function setupUserLogin() {
   const userIcon = document.getElementById("userIcon");
   const loginModal = document.getElementById("loginModal");
   const closeLoginModal = document.getElementById("closeLoginModal");
-  const emailInput = document.getElementById("emailInput");
-  const passwordInput = document.getElementById("passwordInput");
-  const loginButton = document.getElementById("loginButton");
+  const loginContainer = document.getElementById("loginContainer");
+  const registerToggle = document.getElementById("registerToggle");
+  const loginToggle = document.getElementById("loginToggle");
 
+  // Comprobamos que todos los elementos existen
+  if (!userIcon || !loginModal || !closeLoginModal || !loginContainer || !registerToggle || !loginToggle) {
+    console.error("Error: Algunos elementos del login no se encontraron. Verifica los IDs en tu HTML.");
+    return;
+  }
+
+  // Mostrar el modal al hacer click en el ícono de usuario
   userIcon.addEventListener("click", () => {
+    console.log("User icon clicked, showing login modal");
     loginModal.style.display = "flex";
   });
 
+  // Cerrar el modal al hacer click en la X o fuera del contenedor
   closeLoginModal.addEventListener("click", () => {
     loginModal.style.display = "none";
   });
-
   loginModal.addEventListener("click", (e) => {
-    if (!e.target.closest(".login-modal-content")) {
+    if (!e.target.closest(".login-container")) {
       loginModal.style.display = "none";
     }
   });
 
-  loginButton.addEventListener("click", () => {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+  // Alternar entre Sign In y Sign Up
+  registerToggle.addEventListener("click", () => {
+    loginContainer.classList.add("active");
+  });
+  loginToggle.addEventListener("click", () => {
+    loginContainer.classList.remove("active");
+  });
+
+  // Ejemplo de acción para los botones de Sign In / Sign Up
+  const signInButton = document.getElementById("signInButton");
+  const signUpButton = document.getElementById("signUpButton");
+
+  signInButton.addEventListener("click", () => {
+    const email = document.getElementById("signInEmail").value.trim();
+    const password = document.getElementById("signInPassword").value.trim();
     if (email && password) {
       alert(`Iniciando sesión con:\nEmail: ${email}\nPassword: ${password}`);
       loginModal.style.display = "none";
-      emailInput.value = "";
-      passwordInput.value = "";
+      // Reiniciar campos si se desea
+      document.getElementById("signInEmail").value = "";
+      document.getElementById("signInPassword").value = "";
     } else {
       alert("Por favor, rellena correo y contraseña");
+    }
+  });
+
+  signUpButton.addEventListener("click", () => {
+    const name = document.getElementById("signUpName").value.trim();
+    const email = document.getElementById("signUpEmail").value.trim();
+    const password = document.getElementById("signUpPassword").value.trim();
+    if (name && email && password) {
+      alert(`Registrando cuenta:\nName: ${name}\nEmail: ${email}`);
+      loginModal.style.display = "none";
+      // Reiniciar campos si se desea
+      document.getElementById("signUpName").value = "";
+      document.getElementById("signUpEmail").value = "";
+      document.getElementById("signUpPassword").value = "";
+    } else {
+      alert("Por favor, completa todos los campos para registrarte");
     }
   });
 }
