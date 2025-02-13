@@ -31,8 +31,11 @@ app.post('/api/login', async (req, res) => {
 
         // Consulta a la base de datos
         const sqlQuery = `
-            SELECT * FROM USUARIOS WHERE USERNAME = $1 AND PASSWORD = $2;
-        `;
+            SELECT * FROM USUARIOS 
+            WHERE USERNAME = $1 
+            AND 
+            PASSWORD = $2;`
+            ;
         const result = await pool.query(sqlQuery, [username, password]);
 
         // Verificar si hay usuario

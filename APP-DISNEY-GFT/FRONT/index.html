@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0"
+    />
+    <title>Disney+ Clone Mejorado</title>
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header class="navbar">
+      <div class="logo">
+        <img src="Disney_Plus_logo.png" alt="Disney+ Clone" />
+      </div>
+
+      <nav class="nav-links">
+        <ul>
+          <li><a href="#" id="searchIcon">Búsqueda</a></li>
+          <li><a href="#" id="allMoviesBtn">Películas</a></li>
+          <li><a href="#" id="favoritesBtn">Favoritos</a></li>
+          <li>
+            <!-- Dropdown Géneros -->
+            <div class="genre-dropdown">
+              <button id="genreButton">Géneros</button>
+              <div class="genre-dropdown-content" id="genreDropdownContent">
+                <!-- Se llena dinámicamente con JS -->
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Contenedor de usuario / login -->
+      <div class="user-container" id="userContainer">
+        <!-- Icono/foto de usuario -->
+        <div class="user-icon" id="userIcon">
+          <img
+            id="userIconImg"
+            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+            alt="User Icon"
+          />
+        </div>
+
+        <!-- Submenú de perfil (oculto si no hay user) -->
+        <div class="profile-submenu" id="profileSubmenu">
+          <span id="sessionLabel"></span>
+          <button class="profile-btn" id="profileMenuBtn">Perfil</button>
+          <button class="logout-btn" id="logoutMenuBtn">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- BARRA DE BÚSQUEDA (oculta por defecto) -->
+    <div class="search-bar" id="searchBar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar por nombre..."
+      />
+      <button id="searchButton">Buscar</button>
+    </div>
+
+    <!-- HERO PRINCIPAL / CARRUSEL DE PELÍCULAS -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-slide" id="heroSlide">
+        <div class="hero-content">
+          <h1>Película Destacada</h1>
+        </div>
+      </div>
+      <button
+        class="carousel-arrow left hero-arrow"
+        id="heroPrev"
+      >&#10094;</button>
+      <button
+        class="carousel-arrow right hero-arrow"
+        id="heroNext"
+      >&#10095;</button>
+    </section>
+
+    <!-- SECCIÓN DE MARCAS / SAGAS (CON CARRUSEL) -->
+    <section class="brands-section">
+      <h2>Elige tu saga favorita</h2>
+      <div class="carousel-container">
+        <!-- Flecha IZQUIERDA -->
+        <button class="carousel-arrow left" id="brandsPrev">&#10094;</button>
+
+        <!-- “Ventana” del carrusel (oculta el overflow) -->
+        <div class="carousel-viewport">
+          <!-- Pista que se mueve con translateX -->
+          <div class="carousel-track" id="brandsTrack">
+            <!-- Los .brand-card se insertan dinámicamente con JS -->
+          </div>
+        </div>
+
+        <!-- Flecha DERECHA -->
+        <button class="carousel-arrow right" id="brandsNext">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN RECOMENDACIONES -->
+    <section class="recommendations-section">
+      <h2 id="moviesTitle">Tus películas favoritas</h2>
+      <div class="movie-container" id="movieContainer"></div>
+    </section>
+
+    <!-- DETALLE DE PELÍCULA (OPCIONAL) -->
+    <section class="movie-detail" id="movieDetail" style="display: none;">
+      <div class="detail-content" id="detailContent">
+        <h3 id="detailTitle"></h3>
+        <p id="detailDescription"></p>
+        <span id="detailYear"></span>
+      </div>
+    </section>
+
+    <!-- MODAL DE LOGIN -->
+    <div class="login-modal" id="loginModal">
+      <div class="login-modal-content">
+        <span class="close-modal" id="closeLoginModal">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <input
+          type="text"
+          id="loginUsername"
+          placeholder="Usuario"
+          required
+        />
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Contraseña"
+          required
+        />
+        <button id="loginButton">Iniciar sesión</button>
+        <p id="loginMessage"></p>
+        <hr />
+        <p>¿No tienes cuenta? <a href="#" id="openRegisterModalLink">Regístrate aquí</a></p>
+      </div>
+    </div>
+
+    <!-- MODAL DE REGISTRO (rol invitado) -->
+    <div class="login-modal" id="registerModal">
+      <div class="login-modal-content">
+        <span class="close-modal" id="closeRegisterModal">&times;</span>
+        <h2>Crear Cuenta</h2>
+        <input
+          type="text"
+          id="registerUsername"
+          placeholder="Usuario"
+          required
+        />
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Contraseña"
+          required
+        />
+        <!-- Nuevo: foto_perfil (opcional) -->
+        <input
+          type="text"
+          id="registerPhoto"
+          placeholder="URL de foto de perfil (opcional)"
+        />
+        <button id="registerButton">Registrar</button>
+        <p id="registerMessage"></p>
+      </div>
+    </div>
+
+    <!-- MODAL PARA AGREGAR NUEVA PELÍCULA (SOLO ADMIN) -->
+    <div class="login-modal" id="addMovieModal">
+      <div class="login-modal-content">
+        <span class="close-modal" id="closeAddMovieModal">&times;</span>
+        <h2>Agregar Nueva Película</h2>
+
+        <input type="text" id="newMovieName" placeholder="Nombre" />
+        <input type="text" id="newMovieDirector" placeholder="Director" />
+
+        <!-- Seleccionar Género (se llenará con fetchGeneros()) -->
+        <select id="newMovieGenero">
+          <option value="">-- Elige Género --</option>
+        </select>
+
+        <input type="number" id="newMovieYear" placeholder="Año" />
+
+        <!-- Seleccionar Saga (se llenará con fetchSagas()) -->
+        <select id="newMovieSaga">
+          <option value="">-- (Opcional) Elige Saga --</option>
+        </select>
+
+        <input
+          type="text"
+          id="newMovieCompania"
+          placeholder="Compañía productora"
+        />
+        <input
+          type="text"
+          id="newMovieImagen"
+          placeholder="URL de la imagen (opcional)"
+        />
+
+        <button id="saveMovieButton">Guardar</button>
+      </div>
+    </div>
+
+    <!-- MODAL PARA ELIMINAR PELÍCULA (SOLO ADMIN, uso de <select> + filtro) -->
+    <div class="login-modal" id="deleteMovieModal">
+      <div class="login-modal-content">
+        <span class="close-modal" id="closeDeleteMovieModal">&times;</span>
+        <h2>Eliminar Película</h2>
+
+        <label for="deleteMovieSearch">Buscar:</label>
+        <input
+          type="text"
+          id="deleteMovieSearch"
+          placeholder="Filtra por nombre..."
+          style="margin-bottom: 1rem;"
+        />
+
+        <select id="deleteMovieSelect" size="5" style="width: 100%;">
+          <!-- Se llena dinámicamente con JS -->
+        </select>
+
+        <button id="confirmDeleteMovieButton" style="margin-top: 1rem;">
+          Eliminar
+        </button>
+        <p id="deleteMovieMessage"></p>
+      </div>
+    </div>
+
+    <!-- MODAL PARA PERSONALIZAR PERFIL -->
+    <div class="login-modal" id="profileModal">
+      <div class="login-modal-content">
+        <span class="close-modal" id="closeProfileModal">&times;</span>
+        <h2>Personalizar Perfil</h2>
+
+        <label>Nuevo Usuario (opcional)</label>
+        <input type="text" id="profileNewUsername" placeholder="Nuevo username" />
+
+        <label>Nueva Contraseña (opcional)</label>
+        <input type="password" id="profileNewPassword" placeholder="Nueva contraseña" />
+
+        <!-- Cambiar foto de perfil -->
+        <label>Nueva URL de Foto (opcional)</label>
+        <input type="text" id="profileNewPhoto" placeholder="URL de foto" />
+
+        <button id="saveProfileButton">Guardar Cambios</button>
+        <p id="profileMessage"></p>
+      </div>
+    </div>
+
+    <!-- MODAL PARA MOSTRAR EL TRÁILER -->
+    <div id="trailerModal" class="trailer-modal">
+      <div class="trailer-content">
+        <span class="close-trailer" id="closeTrailer">&times;</span>
+        <iframe
+          id="trailerIframe"
+          width="800"
+          height="450"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
